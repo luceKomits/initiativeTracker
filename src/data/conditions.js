@@ -8,7 +8,8 @@ export const CONDITIONS = [
   "Burning",
   "Frozen",
   "Light Bleeding",
-  "Heavy Bleeding"
+  "Heavy Bleeding (Stacionarno)",
+  "Heavy Bleeding (Kretanje)"
 ];
 
 export const CONDITION_COLORS = {
@@ -17,6 +18,7 @@ export const CONDITION_COLORS = {
   "Frozen": "#06b6d4",
   "Unconscious": "#64748b",
   "Light Bleeding": "#ef4444",
-  "Heavy Bleeding": "#991b1b",
+  "Heavy Bleeding (Stationary)": "#991b1b",
+  "Heavy Bleeding (Moving)": "#7f1d1d",
   "default": "#fbbf24"
 };

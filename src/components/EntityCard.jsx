@@ -13,15 +13,23 @@ const EntityCard = ({ entity, active, onDelete, onUpdate }) => {
 
     const addCondition = (e) => {
         const condition = e.target.value;
-        if (condition && !entity.conditions.includes(condition)) {
-            onUpdate(entity.id, { conditions: [...entity.conditions, condition] });
+        if (condition) {
+            if (condition === "Light Bleeding") {
+                // Allow stacking for Light Bleeding
+                onUpdate(entity.id, { conditions: [...entity.conditions, condition] });
+            } else if (!entity.conditions.includes(condition)) {
+                onUpdate(entity.id, { conditions: [...entity.conditions, condition] });
+            }
         }
         e.target.value = ""; // Reset select
     };
 
-    const removeCondition = (condToRemove) => {
+    const removeCondition = (condToRemove, indexToRemove) => {
+        // Remove only the specific instance by index
+        const newConditions = [...entity.conditions];
+        newConditions.splice(indexToRemove, 1);
         onUpdate(entity.id, {
-            conditions: entity.conditions.filter(c => c !== condToRemove)
+            conditions: newConditions
         });
     };
 
@@ -57,21 +65,21 @@ const EntityCard = ({ entity, active, onDelete, onUpdate }) => {
             </div>
 
             <div className={styles.conditions}>
-                {entity.conditions.map(c => (
+                {entity.conditions.map((c, index) => (
                     <span
-                        key={c}
+                        key={`${c}-${index}`}
                         className={styles.conditionTag}
                         style={{ borderColor: CONDITION_COLORS[c] || CONDITION_COLORS.default }}
                     >
                         {c}
-                        <span className={styles.removeCondition} onClick={() => removeCondition(c)}>×</span>
+                        <span className={styles.removeCondition} onClick={() => removeCondition(c, index)}>×</span>
                     </span>
                 ))}
             </div>
 
             <div className={styles.actions}>
                 <select className={styles.addConditionSelect} onChange={addCondition} defaultValue="">
-                    <option value="" disabled>+ Add Condition</option>
+                    <option value="" disabled>+ Dodaj stanje</option>
                     {CONDITIONS.map(c => (
                         <option key={c} value={c}>{c}</option>
                     ))}

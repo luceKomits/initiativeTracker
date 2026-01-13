@@ -5,7 +5,7 @@ const TurnControls = ({ round, onNextTurn, onReset, onClear }) => {
     return (
         <div className={styles.controlsBar}>
             <div className={styles.roundDisplay}>
-                <span className={styles.roundLabel}>ROUND</span>
+                <span className={styles.roundLabel}>POTEZ</span>
                 {round}
             </div>
 
@@ -13,13 +13,13 @@ const TurnControls = ({ round, onNextTurn, onReset, onClear }) => {
                 <button className={styles.resetBtn} onClick={onConvert => {
                     if (confirm('Clear all combatants?')) onClear();
                 }}>
-                    Clear All
+                    Očisti sve
                 </button>
                 <button className={styles.resetBtn} onClick={onReset}>
-                    Reset Round
+                    Resetiraj poteze
                 </button>
                 <button className={styles.nextBtn} onClick={onNextTurn}>
-                    Next Turn ➔
+                    Sljedeći potez ➔
                 </button>
             </div>
         </div>

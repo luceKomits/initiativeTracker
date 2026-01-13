@@ -86,8 +86,17 @@ const App = () => {
 
     // Auto-apply bleeding
     let damage = 0;
-    if (nextEntity.conditions.includes('Light Bleeding')) damage += 10;
-    if (nextEntity.conditions.includes('Heavy Bleeding')) damage += 20;
+
+    // Light bleeding stacks
+    const lightBleedingCount = nextEntity.conditions.filter(c => c === 'Light Bleeding').length;
+    damage += lightBleedingCount;
+
+    // Heavy bleeding modes
+    if (nextEntity.conditions.includes('Heavy Bleeding (Stationary)')) damage += 5;
+    if (nextEntity.conditions.includes('Heavy Bleeding (Moving)')) damage += 10;
+
+    // Legacy support
+    if (nextEntity.conditions.includes('Heavy Bleeding')) damage += 5;
 
     if (damage > 0) {
       updateEntity(nextEntity.id, { hp: nextEntity.hp - damage });
@@ -109,14 +118,14 @@ const App = () => {
   return (
     <div className="app-layout">
       <div className="container">
-        <h1>INITIATIVE TRACKER</h1>
+        <h1>REDOSLIJED INICIJATIVE</h1>
 
         <CreateEntityForm onAdd={addEntity} />
 
         <div className="entity-list">
           {sortedEntities.length === 0 ? (
             <div style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '2rem' }}>
-              No combatants yet. Add some above!
+              Nitko nije u borbi. Dodaj ih!
             </div>
           ) : (
             sortedEntities.map(entity => (

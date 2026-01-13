@@ -28,14 +28,14 @@ const CreateEntityForm = ({ onAdd }) => {
 
     return (
         <form className={styles.formCard} onSubmit={handleSubmit}>
-            <h3 className={styles.title}>Add Combatant</h3>
+            <h3 className={styles.title}>Dodaj osobu</h3>
 
             <div className={styles.row}>
                 <div className={styles.inputGroup}>
                     <label className={styles.label}>Name</label>
                     <input
                         type="text"
-                        placeholder="e.g. Vatrena Komunjara"
+                        placeholder="e.g. Vatreni Komunjara"
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
@@ -56,7 +56,7 @@ const CreateEntityForm = ({ onAdd }) => {
                     <label className={styles.label}>Max HP</label>
                     <input
                         type="number"
-                        placeholder="10"
+                        placeholder="HP"
                         value={hp}
                         onChange={e => setHp(e.target.value)}
                     />
@@ -69,15 +69,14 @@ const CreateEntityForm = ({ onAdd }) => {
                         onChange={e => setIsEnemy(e.target.checked)}
                     />
                     <label htmlFor="isEnemy" style={{ cursor: 'pointer', color: isEnemy ? 'var(--accent-crimson)' : 'var(--text-secondary)' }}>
-                        Is Enemy?
+                        Neprijatelj
                     </label>
                 </div>
             </div>
 
-            <button type="submit" className={styles.submitBtn}>Add to Combat</button>
+            <button type="submit" className={styles.submitBtn}>Dodaj u borbu</button>
         </form>
     );
 };
 
 export default CreateEntityForm;
-
