@@ -35,7 +35,7 @@ const CreateEntityForm = ({ onAdd }) => {
                     <label className={styles.label}>Name</label>
                     <input
                         type="text"
-                        placeholder="e.g. Goblin Archer"
+                        placeholder="e.g. Vatrena Komunjara"
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
@@ -44,7 +44,7 @@ const CreateEntityForm = ({ onAdd }) => {
                     <label className={styles.label}>Initiative</label>
                     <input
                         type="number"
-                        placeholder="d20 + Dex"
+                        placeholder="d20 Roll"
                         value={initiative}
                         onChange={e => setInitiative(e.target.value)}
                     />
@@ -80,3 +80,4 @@ const CreateEntityForm = ({ onAdd }) => {
 };
 
 export default CreateEntityForm;
+
