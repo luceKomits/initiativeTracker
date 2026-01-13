@@ -1,0 +1,67 @@
+.formCard {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.inputGroup {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.checkboxGroup {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.submitBtn {
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submitBtn:hover {
+    background: #fcd34d;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+}
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

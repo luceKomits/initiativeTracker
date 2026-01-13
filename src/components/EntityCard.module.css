@@ -1,0 +1,163 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.active {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.05) 0%, rgba(30, 41, 59, 0) 100%);
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.enemy {
+    border-left: 4px solid var(--accent-crimson);
+}
+
+.player {
+    border-left: 4px solid var(--accent-emerald);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.nameInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.initiative {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--text-accent);
+    font-size: 1.1rem;
+}
+
+.name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.healthSection {
+    margin-bottom: 0.75rem;
+}
+
+.hpBarContainer {
+    height: 8px;
+    background: var(--bg-primary);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.hpBar {
+    height: 100%;
+    background: var(--accent-emerald);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.hpBarLow {
+    background: var(--accent-crimson);
+}
+
+.hpControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.hpInput {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    width: 50px;
+    text-align: right;
+    color: var(--text-primary);
+    font-weight: bold;
+    padding: 0;
+    border-radius: 0;
+}
+
+.hpInput:focus {
+    outline: none;
+    border-bottom-color: var(--accent-gold);
+}
+
+.conditions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.conditionTag {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.removeCondition {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.removeCondition:hover {
+    opacity: 1;
+    color: var(--accent-crimson);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.75rem;
+}
+
+.addConditionSelect {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    width: auto;
+}
+
+.deleteBtn {
+    color: var(--text-secondary);
+    background: transparent;
+    font-size: 0.8rem;
+    padding: 4px;
+}
+
+.deleteBtn:hover {
+    color: var(--accent-crimson);
+    background: rgba(239, 68, 68, 0.1);
+}
