@@ -38,7 +38,10 @@ const EntityCard = ({ entity, active, onDelete, onUpdate }) => {
             <div className={styles.header}>
                 <div className={styles.nameInfo}>
                     <div className={styles.initiative}>{entity.initiative}</div>
-                    <div className={styles.name}>{entity.name}</div>
+                    <div className={styles.name}>
+                        {entity.name}
+                        {entity.ac && <span style={{ fontSize: '0.8em', opacity: 0.7, marginLeft: '8px' }}>🛡️{entity.ac}</span>}
+                    </div>
                 </div>
                 <button className={styles.deleteBtn} onClick={() => onDelete(entity.id)} title="Remove combatant">✕</button>
             </div>
