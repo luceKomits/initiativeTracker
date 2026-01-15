@@ -92,8 +92,8 @@ const App = () => {
     damage += lightBleedingCount;
 
     // Heavy bleeding modes
-    if (nextEntity.conditions.includes('Heavy Bleeding (Stationary)')) damage += 5;
-    if (nextEntity.conditions.includes('Heavy Bleeding (Moving)')) damage += 10;
+    if (nextEntity.conditions.includes('Heavy Bleeding (Stacionarno)')) damage += 5;
+    if (nextEntity.conditions.includes('Heavy Bleeding (Kretanje)')) damage += 10;
 
     // Legacy support
     if (nextEntity.conditions.includes('Heavy Bleeding')) damage += 5;
