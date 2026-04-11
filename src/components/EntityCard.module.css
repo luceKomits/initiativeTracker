@@ -161,3 +161,42 @@
     color: var(--accent-crimson);
     background: rgba(239, 68, 68, 0.1);
 }
+
+.headerActions {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.actionBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+    color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.editInput {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 1rem;
+    outline: none;
+    text-align: center;
+}
+
+.editInput:focus {
+    border-color: var(--accent-gold);
+}

@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './EntityCard.module.css';
 import { CONDITIONS, CONDITION_COLORS } from '../data/conditions';
 
 const EntityCard = ({ entity, active, onDelete, onUpdate }) => {
     const hpPercent = Math.min(100, Math.max(0, (entity.hp / entity.maxHp) * 100));
     const isLowHp = hpPercent < 50;
+    const [isEditing, setIsEditing] = useState(false);
+    const [editForm, setEditForm] = useState({
+        initiative: entity.initiative,
+        ac: entity.ac || ''
+    });
+
+    const handleEditSave = () => {
+        onUpdate(entity.id, {
+            initiative: parseInt(editForm.initiative) || 0,
+            ac: parseInt(editForm.ac) || 0
+        });
+        setIsEditing(false);
+    };
+
+    const handleEditCancel = () => {
+        setEditForm({
+            initiative: entity.initiative,
+            ac: entity.ac || ''
+        });
+        setIsEditing(false);
+    };
 
     const handleHpChange = (e) => {
         const val = parseInt(e.target.value) || 0;
@@ -37,13 +58,53 @@ const EntityCard = ({ entity, active, onDelete, onUpdate }) => {
         <div className={`${styles.card} ${active ? styles.active : ''} ${entity.isEnemy ? styles.enemy : styles.player}`}>
             <div className={styles.header}>
                 <div className={styles.nameInfo}>
-                    <div className={styles.initiative}>{entity.initiative}</div>
-                    <div className={styles.name}>
-                        {entity.name}
-                        {entity.ac && <span style={{ fontSize: '0.8em', opacity: 0.7, marginLeft: '8px' }}>🛡️{entity.ac}</span>}
-                    </div>
+                    {isEditing ? (
+                        <>
+                            <input
+                                type="number"
+                                className={styles.editInput}
+                                value={editForm.initiative}
+                                onChange={e => setEditForm({ ...editForm, initiative: e.target.value })}
+                                style={{ width: '40px' }}
+                                title="Initiative"
+                            />
+                            <div className={styles.name}>
+                                {entity.name}
+                                <span style={{ marginLeft: '8px' }}>🛡️</span>
+                                <input
+                                    type="number"
+                                    className={styles.editInput}
+                                    value={editForm.ac}
+                                    onChange={e => setEditForm({ ...editForm, ac: e.target.value })}
+                                    placeholder="AC"
+                                    style={{ width: '40px', marginLeft: '4px' }}
+                                    title="Armor Class"
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className={styles.initiative}>{entity.initiative}</div>
+                            <div className={styles.name}>
+                                {entity.name}
+                                {entity.ac && <span style={{ fontSize: '0.8em', opacity: 0.7, marginLeft: '8px' }}>🛡️{entity.ac}</span>}
+                            </div>
+                        </>
+                    )}
                 </div>
-                <button className={styles.deleteBtn} onClick={() => onDelete(entity.id)} title="Remove combatant">✕</button>
+                <div className={styles.headerActions}>
+                    {isEditing ? (
+                        <>
+                            <button className={styles.actionBtn} onClick={handleEditSave} title="Spremi">✓</button>
+                            <button className={styles.actionBtn} onClick={handleEditCancel} title="Odustani">✕</button>
+                        </>
+                    ) : (
+                        <>
+                            <button className={styles.actionBtn} onClick={() => setIsEditing(true)} title="Uredi">✎</button>
+                            <button className={styles.deleteBtn} onClick={() => onDelete(entity.id)} title="Remove combatant">✕</button>
+                        </>
+                    )}
+                </div>
             </div>
 
             <div className={styles.healthSection}>
